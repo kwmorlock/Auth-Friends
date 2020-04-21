@@ -1,6 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Login from '.components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import FriendsList from './components/FriendsList';
+import AddFriend from './components/Addfriend';
+
+
 
 function App() {
   return (
