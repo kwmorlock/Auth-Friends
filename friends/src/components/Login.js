@@ -1,17 +1,18 @@
 import React from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 
+
 class Login extends React.Component {
     state = {
-        creditials: {
+        credentials: {
             username: '',
             password: ''
         }
     }
 handleChange = e => {
     this.setState({
-        creditials: {
-            ...this.state.creditials,
+        credentials: {
+            ...this.state.credentials,
             [e.target.name]: e.target.value
         }
     });
@@ -20,10 +21,10 @@ handleChange = e => {
 login = e => {
     e.preventDefault();
     axiosWithAuth()
-    .post('./api/login', this.state.creditials)
-    .then(rest => {
+    .post('./api/login', this.state.credentials)
+    .then(res => {
         localStorage.setItem('token', JSON.stringify(res.data.payload));
-        this.props.history.push('/protected');
+        this.props.history.push('/friendslist');
     })
     .catch(err => console.log({err}));
 }
@@ -52,3 +53,5 @@ render(){
 }
 
 }
+
+export default Login;
