@@ -45,18 +45,21 @@ render(){
         <div>
             {this.setState.isLoading && <p>Loading...</p>}
         <form onSubmit={this.addFriend}>
+            Name:
         <input
             type="text"
             name="name"
             value={this.state.userdetails.name}
             onChange={this.handleChange}
           />
+          Age:
           <input
             type="text"
             name="age"
             value={this.state.userdetails.age}
             onChange={this.handleChange}
           />
+          Email:
           <input
             type="text"
             name="email"

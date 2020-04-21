@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: hotpink;
+  display:flex;
+  justify-content: center;
+  margin-top: 15%;
+}
