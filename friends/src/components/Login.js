@@ -7,7 +7,8 @@ class Login extends React.Component {
         credentials: {
             username: '',
             password: ''
-        }
+        },
+        isLoading: false
     }
 handleChange = e => {
     this.setState({
@@ -20,12 +21,18 @@ handleChange = e => {
 
 login = e => {
     e.preventDefault();
+    this.setState({
+        isLoading: true
+    })
     axiosWithAuth()
-    .post('./api/login', this.state.credentials)
+    .post('http://localhost:5000/api/login', this.state.credentials)
     .then(res => {
         localStorage.setItem('token', JSON.stringify(res.data.payload));
         this.props.history.push('/friendslist');
+        this.setState({
+            isLoading: true
     })
+})
     .catch(err => console.log({err}));
 }
 
@@ -33,6 +40,7 @@ login = e => {
 render(){
     return (
         <div>
+            {this.setState.isLoading && <p>Loading...</p>}
         <form onSubmit={this.login}>
           <input
             type="text"
